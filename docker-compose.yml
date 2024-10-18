@@ -16,8 +16,13 @@ services:
 
 # STEPS 
 
+# paso_1
 # docker compose up -d
-# para apagar docker compose down
 
+# paso_2
 # docker exec -it mysql mysql -u root -p 
+
+# para apagar
+# docker compose down
+
 # ver carpetas: docker exec -it mysql sh
