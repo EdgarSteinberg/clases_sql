@@ -26,3 +26,6 @@ services:
 # docker compose down
 
 # ver carpetas: docker exec -it mysql sh
+
+
+# source /data/practica-coderhouse.sql

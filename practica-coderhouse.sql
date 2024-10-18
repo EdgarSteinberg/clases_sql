@@ -1,7 +1,7 @@
 -- CREACION DE LA BASE DE DATOS  Y LO BORRA SI ES QUE
 -- EXISTE ESA BASE DE DATOS
 
-DROP DATABASE IF EXISTS coderhouse_gamers ;
+-- DROP DATABASE IF EXISTS coderhouse_gamers ;
 
 CREATE DATABASE coderhouse_gamers ; 
 
