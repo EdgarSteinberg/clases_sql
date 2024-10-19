@@ -121,8 +121,38 @@ WHERE
     
 -- Buscar todos los nombres que arranquen con M
 SELECT
-	first_name
+	first_name,
+    email
 FROM
 	coderhouse_gamers.system_user
 WHERE
-	first_name LIKE 'M%';
+	first_name LIKE 'M%'
+    AND email LIKE '%.com'
+    ;
+
+-- ORDER BY
+SELECT
+	first_name,
+    email
+FROM
+	coderhouse_gamers.system_user
+WHERE
+	first_name LIKE 'M%'
+    AND email LIKE '%.com'
+ORDER BY first_name, email
+    ;
+
+-- DESC REVERSE
+SELECT
+	first_name,
+    email
+FROM
+	coderhouse_gamers.system_user
+WHERE
+	first_name LIKE 'M%'
+    AND email LIKE '%.com'
+ORDER BY email DESC
+    ;
+
+
+
