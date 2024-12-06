@@ -27,7 +27,7 @@ docker exec -it mysql-server mysql \
  --verbose \
  -u root \
  -p -e "\
-DROPT DATABASE IF EXISTS donaton; 
+DROP DATABASE IF EXISTS donaton; 
 source /proyecto_sql_docker/estructura.sql; \
 source /proyecto_sql_docker/population.sql; \
 source /proyecto_sql_docker/objetos/1_vistas.sql; \
@@ -38,3 +38,27 @@ source /proyecto_sql_docker/objetos/4_triggers.sql; "
 
 # dar de baja la base de datos
 docker compose down
+
+
+
+#usuarios levantar todo el proyecto como non-root
+# crear base de datos
+
+docker exec -it mysql-server mysql \
+ --verbose \
+ -u root \
+ -p -e "\
+source /proyecto_sql_docker/usuario-non-root.sql"
+
+
+docker exec -it mysql-server mysql \
+ --verbose \
+ -u non_root \
+ -p -e "\
+source /proyecto_sql_docker/estructura.sql; \
+source /proyecto_sql_docker/population.sql; \
+source /proyecto_sql_docker/objetos/1_vistas.sql; \
+source /proyecto_sql_docker/objetos/2_funciones.sql; \
+source /proyecto_sql_docker/objetos/3_procedimientos.sql; \
+source /proyecto_sql_docker/objetos/4_triggers.sql;
+source /proyecto_sql_docker/objetos/5_usuarios.sql;"
