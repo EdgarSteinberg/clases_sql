@@ -62,3 +62,20 @@ source /proyecto_sql_docker/objetos/2_funciones.sql; \
 source /proyecto_sql_docker/objetos/3_procedimientos.sql; \
 source /proyecto_sql_docker/objetos/4_triggers.sql;
 source /proyecto_sql_docker/objetos/5_usuarios.sql;"
+
+
+
+
+# final con errores seguramente jaja
+docker exec -it mysql-server mysql \
+ --verbose \
+ -u non_root \
+ -p -e "\
+source /proyecto_sql_docker/estructura.sql; \
+source /proyecto_sql_docker/population.sql; \
+source /proyecto_sql_docker/objetos/1_vistas.sql; \
+source /proyecto_sql_docker/objetos/2_funciones.sql; \
+source /proyecto_sql_docker/objetos/3_procedimientos.sql; \
+source /proyecto_sql_docker/objetos/4_triggers.sql;
+source /proyecto_sql_docker/objetos/5_usuarios.sql;
+source /proyecto_sql_docker/objetos/6_procedure_tcl.sql;"
