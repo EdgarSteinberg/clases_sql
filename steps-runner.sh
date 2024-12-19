@@ -8,7 +8,7 @@ docker exec -it mysql-server bash
 
 # crear la base de datos desde el codigo sql creado
 docker exec -it mysql-server mysql --verbose -u root -p -e "source /proyecto_sql_docker/estructura.sql;" 
-
+docker exec -it -e MYSQL_PWD=coderhouse mysql-server mysql -u root -p -e "source /proyecto_sql_docker/estructura.sql;" 
 
 # ver las tablas 
 docker exec -it mysql-server mysql --verbose -u root -p -e "SHOW TABLES FROM donaton;" 
@@ -44,14 +44,15 @@ docker compose down
 #usuarios levantar todo el proyecto como non-root
 # crear base de datos
 
-docker exec -it mysql-server mysql \
+docker exec -it -e MYSQL_PWD="coderhouse" mysql-server\
+ mysql \
  --verbose \
  -u root \
  -p -e "\
 source /proyecto_sql_docker/usuario-non-root.sql"
 
 
-docker exec -it mysql-server mysql \
+docker exec -it -e MYSQL_PWD="pass_123" mysql-server mysql \
  --verbose \
  -u non_root \
  -p -e "\
@@ -71,6 +72,7 @@ docker exec -it mysql-server mysql \
  --verbose \
  -u non_root \
  -p -e "\
+ DROP DATABASES IF EXISTS donaton;
 source /proyecto_sql_docker/estructura.sql; \
 source /proyecto_sql_docker/population.sql; \
 source /proyecto_sql_docker/objetos/1_vistas.sql; \
